@@ -1,37 +1,37 @@
 export const Users = [
     {
       id:1,
-      profilePicture: "assets/profile/1.jpeg",
+      profilePicture: "profile/1.jpeg",
       username: "Safak Kocaoglu",
     },
     {
       id:2,
-      profilePicture: "assets/profile/2.jpeg",
+      profilePicture: "profile/2.jpeg",
       username: "Janell Shrum",
     },
     {
       id:3,
-      profilePicture: "assets/profile/3.jpeg",
+      profilePicture: "profile/3.jpeg",
       username: "Alex Durden",
     },
     {
       id:4,
-      profilePicture: "assets/profile/4.jpeg",
+      profilePicture: "profile/4.jpeg",
       username: "Dora Hawks",
     },
     {
       id:5,
-      profilePicture: "assets/profile/5.jpeg",
+      profilePicture: "profile/5.jpeg",
       username: "Thomas Holden",
     },
     {
       id:6,
-      profilePicture: "assets/profile/6.jpeg",
+      profilePicture: "profile/6.jpeg",
       username: "Shirley Beauchamp",
     },
     {
       id:7,
-      profilePicture: "assets/profile/7.jpeg",
+      profilePicture: "profile/7.jpeg",
       username: "Travis Bennett",
     },
     {
@@ -46,7 +46,7 @@ export const Users = [
     },
     {
       id:10,
-      profilePicture: "assets/profile/10.jpeg",
+      profilePicture: "profile/10.jpeg",
       username: "Safak Kocaoglu",
     },
   ];
@@ -63,7 +63,7 @@ export const Users = [
     },
     {
       id: 2,
-      photo: "assets/post/2.jpeg",
+      photo: "post/2.jpeg",
       date: "15 mins ago",
       userId: 2,
       like: 2,
@@ -72,7 +72,7 @@ export const Users = [
     {
       id: 3,
       desc: "Every moment is a fresh beginning.",
-      photo: "assets/post/3.jpeg",
+      photo: "post/3.jpeg",
       date: "1 hour ago",
       userId: 3,
       like: 61,
@@ -88,7 +88,7 @@ export const Users = [
     },
     {
       id: 5,
-      photo: "assets/post/5.jpeg",
+      photo: "post/5.jpeg",
       date: "5 hours ago",
       userId: 5,
       like: 23,
@@ -105,7 +105,7 @@ export const Users = [
     {
       id: 7,
       desc: "Never regret anything that made you smile.",
-      photo: "assets/post/7.jpeg",
+      photo: "post/7.jpeg",
       date: "2 days ago",
       userId: 7,
       like: 52,
@@ -113,7 +113,7 @@ export const Users = [
     },
     {
       id: 8,
-      photo: "assets/post/8.jpeg",
+      photo: "post/8.jpeg",
       date: "3 days ago",
       userId: 8,
       like: 15,
@@ -130,7 +130,7 @@ export const Users = [
     },
     {
       id: 10,
-      photo: "assets/post/10.jpeg",
+      photo: "post/10.jpeg",
       date: "1 week ago",
       userId: 10,
       like: 104,
