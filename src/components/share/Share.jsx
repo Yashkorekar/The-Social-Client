@@ -6,45 +6,37 @@ import {
   EmojiEmotions,
   Cancel,
 } from "@material-ui/icons";
-import React, { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
-function Share() {
+
+export default function Share() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const desc = useRef();
-
   const [file, setFile] = useState(null);
+
   const submitHandler = async (e) => {
-    // new post
     e.preventDefault();
     const newPost = {
       userId: user._id,
       desc: desc.current.value,
     };
-
-    // filename conflict solver
     if (file) {
       const data = new FormData();
-      const filename = Date.now() + file.name;
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
       data.append("file", file);
-      data.append("name", filename);
-      newPost.img = filename;
+      newPost.img = fileName;
       console.log(newPost);
       try {
         await axios.post("/upload", data);
-      } catch (error) {
-        console.log(error);
-      }
+      } catch (err) {}
     }
-
     try {
-      // SENDING POST AND RELOADING THE PAGE ON CLIENT SIDE
       await axios.post("/post", newPost);
       window.location.reload();
-    } catch (err) {
-      console.log(err);
-    }
+    } catch (err) {}
   };
 
   return (
@@ -52,24 +44,21 @@ function Share() {
       <div className="shareWrapper">
         <div className="shareTop">
           <img
+            className="shareProfileImg"
             src={
               user.profilePicture
                 ? PF + user.profilePicture
-                : PF + "/profile/noProfile.png"
+                : PF + "person/noAvatar.png"
             }
             alt=""
-            className="shareProfileImg"
           />
           <input
-            placeholder={"whats on your mind? " + user.username + "?"}
-            ref={desc}
+            placeholder={"What's in your mind " + user.username + "?"}
             className="shareInput"
+            ref={desc}
           />
         </div>
-        {/* share Hr Line */}
         <hr className="shareHr" />
-        {/* preview and cancel the file logic goes here */}
-
         {file && (
           <div className="shareImgContainer">
             <img className="shareImg" src={URL.createObjectURL(file)} alt="" />
@@ -110,5 +99,3 @@ function Share() {
     </div>
   );
 }
-
-export default Share;
