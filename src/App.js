@@ -1,17 +1,16 @@
-import Home from "./pages/home/Home.jsx";
-import Login from "./pages/login/Login.jsx";
-import React from "react";
-import { AuthContext } from "./context/AuthContext.js";
-import Register from "./pages/register/Register.jsx";
-import Profile from "./pages/profile/Profile.jsx";
-import { useContext } from "react";
+import Home from "./pages/home/Home";
+import Login from "./pages/login/Login";
+import Profile from "./pages/profile/Profile";
+import Register from "./pages/register/Register";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import Messenger from "./pages/messenger/Messenger.jsx";
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
+import Messenger from "./pages/messenger/Messenger";
 function App() {
   const { user } = useContext(AuthContext);
   return (

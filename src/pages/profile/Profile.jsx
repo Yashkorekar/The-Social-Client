@@ -1,23 +1,20 @@
 import "./profile.css";
-
-import React from "react";
 import Topbar from "../../components/topbar/Topbar";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
 import { useParams } from "react-router";
 
-function Profile() {
+export default function Profile() {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
   const [user, setUser] = useState({});
   const username = useParams().username;
 
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/user?username=${username}`);
+      const res = await axios.get(`/users?username=${username}`);
       setUser(res.data);
     };
     fetchUser();
@@ -36,19 +33,18 @@ function Profile() {
                 src={
                   user.coverPicture
                     ? PF + user.coverPicture
-                    : PF + "profile/noCover.jpg"
+                    : PF + "person/noCover.png"
                 }
                 alt=""
               />
-
               <img
+                className="profileUserImg"
                 src={
                   user.profilePicture
                     ? PF + user.profilePicture
-                    : PF + "profile/noProfile.png"
+                    : PF + "person/noAvatar.png"
                 }
                 alt=""
-                className="profileUserImg"
               />
             </div>
             <div className="profileInfo">
@@ -65,5 +61,3 @@ function Profile() {
     </>
   );
 }
-
-export default Profile;
