@@ -1,10 +1,10 @@
+import { useContext, useRef } from "react";
 import "./login.css";
 import { loginCall } from "../../apiCalls";
-import React from "react";
-import { useContext, useRef } from "react";
-import { CircularProgress } from "@material-ui/core";
 import { AuthContext } from "../../context/AuthContext";
-function Login() {
+import { CircularProgress } from "@material-ui/core";
+
+export default function Login() {
   const email = useRef();
   const password = useRef();
   const { isFetching, dispatch } = useContext(AuthContext);
@@ -16,12 +16,15 @@ function Login() {
       dispatch
     );
   };
+
   return (
     <div className="login">
       <div className="loginWrapper">
         <div className="loginLeft">
-          <h3 className="loginLogo">GO SOCIAL</h3>
-          <span className="loginDesc">Connect with hera pheri characters</span>
+          <h3 className="loginLogo">Lamasocial</h3>
+          <span className="loginDesc">
+            Connect with friends and the world around you on Lamasocial.
+          </span>
         </div>
         <div className="loginRight">
           <form className="loginBox" onSubmit={handleClick}>
@@ -36,22 +39,23 @@ function Login() {
               placeholder="Password"
               type="password"
               required
+              minLength="6"
               className="loginInput"
               ref={password}
             />
             <button className="loginButton" type="submit" disabled={isFetching}>
               {isFetching ? (
-                <CircularProgress color="inherit" size="25px" />
+                <CircularProgress color="white" size="20px" />
               ) : (
-                "Login"
+                "Log In"
               )}
             </button>
-            <span className="loginForgot">Forgot Password</span>
+            <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton">
               {isFetching ? (
-                <CircularProgress size="25px" />
+                <CircularProgress color="white" size="20px" />
               ) : (
-                "create new Account"
+                "Create a New Account"
               )}
             </button>
           </form>
@@ -60,5 +64,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;
