@@ -6,7 +6,10 @@ import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 
+import Heart from "react-animated-heart";
+
 export default function Post({ post }) {
+  // heart animation twitter like
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
@@ -25,12 +28,14 @@ export default function Post({ post }) {
     fetchUser();
   }, [post.userId]);
 
+  const [isClick, setClick] = useState(isLiked);
   const likeHandler = () => {
     try {
       axios.put("/posts/" + post._id + "/like", { userId: currentUser._id });
     } catch (err) {}
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
+    setClick(!isClick);
   };
   return (
     <div className="post">
@@ -61,7 +66,10 @@ export default function Post({ post }) {
         </div>
         <div className="postBottom">
           <div className="postBottomLeft">
-            <img
+            <div className="heartanim">
+              <Heart isClick={isClick} onClick={likeHandler} />
+            </div>
+            {/* <img
               className="likeIcon"
               src={`${PF}like.png`}
               onClick={likeHandler}
@@ -72,7 +80,7 @@ export default function Post({ post }) {
               src={`${PF}heart.png`}
               onClick={likeHandler}
               alt=""
-            />
+            /> */}
             <span className="postLikeCounter">{like} people like it</span>
           </div>
           <div className="postBottomRight">
