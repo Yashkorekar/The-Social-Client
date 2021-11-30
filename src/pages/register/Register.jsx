@@ -35,7 +35,7 @@ export default function Register() {
         <div className="loginLeft">
           <h3 className="loginLogo">Go Social</h3>
           <span className="loginDesc">
-            Connect with friends the World.
+            Connect with the <span className="earth"></span>
           </span>
         </div>
         <div className="loginRight">
