@@ -24,7 +24,7 @@ export default function Register() {
         await axios.post("/auth/register", user);
         history.push("/login");
       } catch (err) {
-        console.log(err);
+        console.log(err.response);
       }
     }
   };
